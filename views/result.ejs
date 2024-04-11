@@ -1,0 +1,22 @@
+<%-include("partial/header") -%>
+
+<div id="loading-container">
+    <div id="loading-icon"></div>
+  </div>
+  
+  
+  <div id="actual-content" style="display: none;">
+  </div>
+  
+  <script>document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("loading-container").style.display = "flex";
+    
+   
+    setTimeout(function() {
+      document.getElementById("loading-container").style.display = "none";
+      
+      document.getElementById("actual-content").style.display = "block";
+    }, 1500);
+  });
+  </script>
+<%-include("partial/footer") -%>

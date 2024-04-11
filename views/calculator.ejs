@@ -1,3 +1,161 @@
 <%-include("partial/header") -%>
-calculator
+
+<div class="loading-bar-container">
+    <div class="ball"></div>
+    <div class="loading-bar" id="loading-bar"></div>
+  </div>
+  
+
+  <div id="page-content" style="display: none;text-align: center;">
+    <form action="/calculator" method="post">
+    <div id="carouselExample" class="carousel slide item2">
+      <div class="carousel-inner">
+        <div class="carousel-item  active item">
+          <div class="calc">
+          <h2 style="text-align: center; font-size: 1.5rem;">Enter Waste Generated</h2>
+          <div class="mb-3">
+            <label for="no.people" class="form-label">No. of people in your house:</label>
+            <input type="number" class="form-control"  name="no.people" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="electricity" class="form-label">Amount of Plastic waste Generated last month (in kg):</label>
+            <input type="number" class="form-control" name="Plastic" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+              <label for="cylinders" class="form-label">Amount of Organic waste Generated last month (in kg):</label>
+              <input type="number" class="form-control" name="Organic" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+              <label for="cylinders" class="form-label">Amount of Metallic Waste Generated last month (in kg):</label>
+              <input type="number" class="form-control" name="Metallic" id="exampleInputPassword1">
+            </div>
+            
+        </div>
+      </div>
+        <div class="carousel-item item1 ">
+          <div class="calc">
+            <h2 style="font-size: 1.5rem;text-align: center;">Choose Your Primary Disposal method</h2>
+            <div class="form-check rad">
+              <input class="form-check-input " type="radio" name="flexRadioDefault" value="Landfill" >
+              <label class="form-check-label" for="flexRadioDefault1">
+               Landfill
+              </label>
+            </div>
+            <div class="form-check rad">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" value="Composting" >
+              <label class="form-check-label" for="flexRadioDefault1">
+                Composting
+              </label>
+            </div>
+            <div class="form-check rad">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" value="Compaction" >
+              <label class="form-check-label" for="flexRadioDefault1">
+                Compaction<br>
+              </label>
+            </div>
+            <div class="form-check rad">
+              <input class="form-check-input " type="radio" name="flexRadioDefault"value="Incineration" >
+              <label class="form-check-label" for="flexRadioDefault1">
+                Incineration
+              </label>
+            </div>
+           <div class="form-check rad">
+              <input class="form-check-input " type="radio" name="flexRadioDefault"value="Recycling"  >
+              <label class="form-check-label" for="flexRadioDefault1">
+                Recycling
+              </label>
+            </div>
+            
+          </div>
+        </div>
+        <div class="carousel-item item3 ">
+          <div class="calc">
+            <h2 style="text-align: center;font-size: 1.5rem;">How Do You Rate Yourself</h2>
+            <label for="customRange2" class="form-label">Rate your efforts to recycle</label>
+            <input type="range" class="form-range"  name="recycle" min="0" max="5" id="customRange2" value="0" >
+            <p class="range-output">0</p>
+            <label for="customRange2" class="form-label">Rate Your efforts to Reuse</label>
+            <input type="range" class="form-range " name="reuse" min="0" max="5" id="customRange2"value="0" >
+            <p class="range-output">0</p>
+            <label for="customRange2" class="form-label">Rate your participation in Cleanups</label>
+            <input type="range" class="form-range "name="cleanup" min="0" max="5" id="customRange2"value="0">
+            <p class="range-output">0</p>
+            <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Find Out</button>
+            </div>
+        </div>
+      </div>
+    </div>
+      <button class="btn btn-primary caro-prev disabled"  style="margin-right:5%;"type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+        <span >Prev</span>
+      </button>
+      <button class="btn btn-primary caro-next" style="margin-left: 5%;"   type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+        <span >Next</span>
+      </button>
+    </div>
+  </form>
+  </div>
+  
+  <script >
+    const loadingBar = document.getElementById('loading-bar');
+    const pageContent = document.getElementById('page-content');
+    const footer=document.getElementsByClassName("footer");
+   
+
+
+    
+    // Simulate loading process
+    let progress = 0;
+    const intervalId = setInterval(() => {
+      progress += 10; 
+      loadingBar.style.width = progress + '%'; 
+      
+      footer[0].style.display="none";
+      // Check if loading is complete
+      if (progress >= 100) {
+        clearInterval(intervalId); // Stop the interval
+        setTimeout(() => {
+          loadingBar.style.display = 'none';
+          pageContent.style.display = 'block';
+          footer[0].style.display="block";
+         
+        }, 500); 
+      }
+    }, 0); 
+    document.addEventListener('DOMContentLoaded', (event) => {
+  let carouselElement = document.querySelector('#carouselExample');
+  let carouselInstance = bootstrap.Carousel.getInstance(carouselElement);
+ 
+  let range= document.getElementsByClassName("form-range");
+  let rangev =document.getElementsByClassName("range-output");
+ for(let i=0;i<3;i++)
+ {
+  range[i].addEventListener('input',function(){
+    const value=this.value;
+    rangev[i].textContent=value;
+  })}
+
+  carouselElement.addEventListener('slid.bs.carousel', function () {
+    let items = this.querySelectorAll('.carousel-item');
+    let lastItem = items[items.length - 1];
+    let isActive = lastItem.classList.contains('active');
+    let firstItem = items[0];
+    let isFirstActive = firstItem.classList.contains('active')
+    
+    // Disable next button at the last slide
+    let nextControl = this.querySelector('.caro-next');
+    let prevControl = this.querySelector('.caro-prev');
+    if (isActive) {
+      nextControl.classList.add('disabled');
+    } else {
+      nextControl.classList.remove('disabled');
+    }
+    if (isFirstActive) {
+      prevControl.classList.add('disabled');
+    } else {
+      prevControl.classList.remove('disabled');
+    }})})
+    </script>
 <%-include("partial/footer") -%>

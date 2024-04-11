@@ -1,0 +1,112 @@
+<%-include("partial/header") -%>
+<div class="loading-bar-container">
+    <div class="ball"></div>
+    <div class="loading-bar" id="loading-bar2"></div>
+  </div>
+  <div id="page-content2">
+    <div class="report-top">
+    <div class="row report">
+        <div class="col-lg-6 report-heading"><p class="rep-head">Littered Area Reporting</p>
+           <img src="/images/report.jpg" class="alertimg" style="margin-top: 10%;">
+              
+        </div>
+        <div class="col-lg-6"><div class="card  rep-cards" >
+            <h1 style="text-align: center;">How It Works:</h1>
+            
+            <div class="card-body">
+                <h1 style="font-size:1.5rem;">Report Litter:</h1>
+              <p class="card-text" >Users simply visit our website or mobile app and submit a report detailing the location of the littered area. They can include descriptions, photos, and any relevant information to help our team locate and assess the situation accurately.</p>
+              <h1 style="font-size:1.5rem; margin-top: 5%;">Real-Time Alerts</h1> 
+              <p class="card-text">Once a report is submitted, our system generates real-time alerts for our cleanup team. They receive detailed information about the reported area, allowing them to plan the most efficient cleanup route.</p>
+              <h1 style="font-size:1.5rem; margin-top: 5%;">Swift Response</h1>
+              <p class="card-text">Our cleanup team is equipped and ready to respond promptly to all reported littered areas. They arrive on-site fully prepared with the necessary tools and resources to safely and effectively clean up the mess.</p>
+               <h1 style="font-size:1.5rem; margin-top: 5%;">Efficiency and Effectiveness</h1>
+               <p class="card-text">With our streamlined reporting system and dedicated cleanup team, we ensure that littered areas are addressed swiftly and thoroughly. Together, we make a tangible difference in creating a cleaner, healthier environment for everyone</p>
+            </div> 
+          </div></div>
+    </div>
+</div>
+<div class="report-bot ">
+
+<div class="rep-form"><form action="/report" method="post">
+    <h1 style="text-align: center;">Report Now</h1>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Name</label>
+      <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Email</label>
+      <input type="email" class="form-control" name="email"id="exampleInputPassword1" required>
+    </div>
+    <div class="mb-3 ">
+        <label for="image" class="form-label">Image</label><br>
+        <input type="file" id="image" name="image" accept="image/*" required><br>
+        
+    </div>
+    <div class="mb-3">
+        <label for="location" class="form-label">Location</label><br>
+        <input type="text" class="form-control" id="coordinates" name="coordinates" readonly required><br>
+        <button type="button" class="btn btn-success" id="getLocationBtn">Get My Location</button><br><br>
+        
+    </div>
+    <div class="d-grid gap-2">
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form></div>
+  </div></div>
+
+        
+   
+
+  <script>
+   const loadingBar = document.getElementById('loading-bar2');
+    const pageContent = document.getElementById('page-content2');
+    const footer=document.getElementsByClassName("footer");
+   
+
+
+    
+    // Simulate loading process
+    pageContent.style.display="none";
+    let progress = 0;
+    const intervalId = setInterval(() => {
+      progress += 10; 
+      loadingBar.style.width = progress + '%'; 
+      
+      footer[0].style.display="none";
+      // Check if loading is complete
+      if (progress >= 100) {
+        clearInterval(intervalId); // Stop the interval
+        setTimeout(() => {
+          loadingBar.style.display = 'none';
+          pageContent.style.display = 'block';
+          footer[0].style.display="block";
+         
+        }, 500); 
+      }
+    }, 0); 
+    document.addEventListener("DOMContentLoaded", function() {
+  const getLocationBtn = document.getElementById("getLocationBtn");
+  const coordinatesInput = document.getElementById("coordinates");
+  
+  getLocationBtn.addEventListener("click", function() {
+    // Check if geolocation is supported by the browser
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const coordinates = `${latitude}, ${longitude}`;
+        coordinatesInput.value = coordinates;
+      }, function(error) {
+        console.error("Error getting location:", error.message);
+      });
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  });
+});
+    
+  </script>
+<%-include("partial/footer") -%>
+

@@ -18,6 +18,18 @@ app.get("/calculator",function(req,res){
   res.render("calculator")
 })
 
+app.post("/calculator",function(req,res){
+  console.log(req.body);
+})
+app.get("/result",function(req,res){
+  res.render("result")
+})
+app.get("/report",function(req,res){
+  res.render("report")
+})
+app.post("/report",function(req,res){
+  console.log(req.body);
+})
 // Environmental Impact = (Waste Quantity) x (Material Type Factor) x (Disposal Method Factor) x (Reuse Factor) x (Recycling Participation Factor)
 
 // Parameters:
