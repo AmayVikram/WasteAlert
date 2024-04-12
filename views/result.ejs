@@ -1,22 +1,158 @@
 <%-include("partial/header") -%>
 
 <div id="loading-container">
-    <div id="loading-icon"></div>
+  <div class="spinner-border" role="status" style="color:#fe6402; --bs-spinner-width:50px;--bs-spinner-height:50px">
+    <span class="visually-hidden">Loading...</span>
+  </div>
   </div>
   
   
   <div id="actual-content" style="display: none;">
+    <div class="res-top">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="res-head">
+          <h1>Your  Alert Score is:</h1>
+          <h1><%= alertscore %>
+          <p style="text-align: center;"><%= rstring %> <p>
+        
+        </div>
+      </div>
+        <div class="col-lg-6">
+          <div class="chart" style="width:80%;">
+            <canvas id="myChart" style="background-color:aliceblue;"></canvas>
+           </div>
+          
+        </div>
+      
+      </div>
+    </div>
+    <div class="res-mid " style="background-color: aliceblue; padding-bottom: 3%;">
+      <h1 style="text-align: center;font-family: alex brush;text-decoration:underline ; font-size:3.75rem ; padding-top: 3%;margin-bottom: 5%;color:#fe6402">Benefits of Waste Reduction</h1>
+     <div class="row">
+      <div class="col-lg-4">
+        <div class="card res-card">
+          <img src="/images/energy-conservator.png" class="card-img-top benefits-image" alt="...">
+          <div class="card-body">
+            <h3 style="text-decoration: underline;color: #fe6402;">Resource Conservation</h3>
+            <p class="card-text" style="margin-bottom: 5%;margin-top: 5%; font-size: 1.3rem;">Reducing waste preserves natural resources like forests, water, and minerals.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card res-card">
+          <img src="/images/green-energy.png" class="card-img-top benefits-image" alt="...">
+          <div class="card-body">
+            <h3 style="text-decoration: underline;color: #fe6402;">Energy Savings</h3>
+            <p class="card-text" style="margin-bottom: 5%;margin-top: 5%; font-size: 1.3rem;"> Less waste means less energy used in manufacturing, reducing greenhouse gas emissions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card res-card">
+          <img src="/images/net-zero.png" class="card-img-top benefits-image" alt="...">
+          <div class="card-body">
+            <h3 style="text-decoration: underline;color: #fe6402;">Emissions Reduction</h3>
+            <p class="card-text" style="margin-bottom: 5%;margin-top: 5%; font-size: 1.3rem;">Waste reduction lowers emissions from landfilling and incineration, helping combat climate change.</p>
+          </div>
+        </div>
+      </div>
+     </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card res-card">
+          <img src="/images/earth.png" class="card-img-top benefits-image" alt="...">
+          <div class="card-body">
+            <h3 style="text-decoration: underline;color: #fe6402;">Ecosystem Protection</h3>
+            <p class="card-text" style="margin-bottom: 5%;margin-top: 5%; font-size: 1.3rem;">By minimizing waste, we prevent pollution and protect wildlife and ecosystems.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card res-card">
+          <img src="/images/prevent.png" class="card-img-top benefits-image" alt="...">
+          <div class="card-body">
+            <h3 style="text-decoration: underline;color: #fe6402;">Pollution Prevention</h3>
+            <p class="card-text" style="margin-bottom: 5%;margin-top: 5%; font-size: 1.3rem;">Waste reduction reduces hazardous substances from entering the environment.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card res-card">
+          <img src="/images/landfill.png" class="card-img-top benefits-image" alt="...">
+          <div class="card-body">
+            <h3 style="text-decoration: underline;color: #fe6402;">Landfill Preservation</h3>
+            <p class="card-text" style="margin-bottom: 5%;margin-top: 5%; font-size: 1.3rem;">Waste reduction extends the lifespan of existing landfills and reduces the need for new ones.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="but" style="text-align: center;">
+    <a href="manage" ><button class="btn btn-primary" id="mnbtn" value="<%= data %>">Manage Your Waste</button></a>
+    </div>
   </div>
+    
+      
   
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("loading-container").style.display = "flex";
     
    
     setTimeout(function() {
       document.getElementById("loading-container").style.display = "none";
-      
+  
       document.getElementById("actual-content").style.display = "block";
     }, 1500);
   });
+  const ctx = document.getElementById('myChart');
+  data1= document.getElementById("mnbtn").value;
+     console.log(data1.length)
+    console.log(data1[1])
+    data2=[];
+    var string=''
+    for( i=0;i<data1.length;i++)
+    {
+      
+      if(data1[i]==',')
+      {
+        data2.push(parseFloat(string));
+        string='';
+      }
+      else
+      string =string+data1[i]
+
+    }
+    data2.push(parseFloat(string))
+    console.log(data2);
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Plastic','Organic','Metallic','Glass', 'Total'],
+    datasets: [{
+      label: 'Your results',
+      data: data2,
+      backgroundColor:'rgba(254, 100, 2, 1)',
+      borderWidth: 1
+    },
+    {
+          label: 'India Average',
+          data: [13, 20, 4, 5,42 ], // Second dataset values
+          backgroundColor: 'rgba(128,128,128,1)', // Bar color
+          // borderColor: 'rgba(255, 99, 132, 1)', // Border color
+          // borderWidth: 1
+        }]
+  },
+  options: {
+    indexAxis:'y',
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
   </script>
 <%-include("partial/footer") -%>

@@ -1,0 +1,148 @@
+<%-include("partial/header") -%>
+<div class="loading-bar-container">
+    <div class="ball"></div>
+    <div class="loading-bar" id="loading-bar3"></div>
+  </div>
+  <div id="page-content3" style="display: none;color: aliceblue;">
+    <div class="manage-top">
+    <!-- <h1 style="text-align: center; margin-bottom: 3%; color:;font-size: 3.5rem; font-weight: 600;">Manage Your Waste</h1> -->
+       <div class="tips" >
+        <h1 style="text-align: center;margin-bottom: 3%;">Tips to Reduce Your Waste</h1>
+        <div class="accordion " id="accordionPanelsStayOpenExample" style="--bs-accordion-bg:#fe9130;--bs-accordion-active-bg:#fe6402">
+            <div class="accordion-item ">
+              <h2 class="accordion-header accitem">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                    Reduce Single-Use Items:
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                   Opt for reusable alternatives whenever possible, such as water bottles, coffee cups, and shopping bags.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                 Buy in Bulk
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    Purchase items in bulk to reduce packaging waste. Bring your own containers to bulk stores or utilize refill stations for household items like soap and detergent.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                    Choose Sustainable Packaging
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    When shopping, opt for products with minimal or eco-friendly packaging. Look for items packaged in recyclable materials or those with packaging made from recycled content.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                    Go Paperless
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    Opt for electronic bills, statements, and subscriptions to reduce paper waste. Use digital tools for note-taking and organizing instead of paper notebooks
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                    Support Eco-Friendly Brands:
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                  <div class="accordion-body">
+                    Choose products from companies committed to sustainability and environmental responsibility. Look for certifications like Fair Trade, Organic, or Forest Stewardship Council (FSC) when shopping.
+                  </div>
+                </div>
+              </div>
+          </div>
+       </div>
+    </div>
+    <div class="manage-mid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="manage-form1">
+                <h1 style="font-size: 3.5rem;margin-bottom: 4%;">Need Further Help?</h1>
+               <p style="font-size: 2rem;margin-bottom: 4%;">Schedule a waste pickup and get Assistance from our team of Experts</p>
+               <button class="btn btn-lg btn-primary" id="Schedulebtn"style="--bs-btn-bg:#fe6402;--bs-btn-border-color:#fe6402">Schedule Now</button>
+            </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="manage-form2"id="manage-form2" style="opacity: 0;">
+                    <form>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Name</label>
+                          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Email</label>
+                          <input type="email" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Date and Time Available</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1">
+                          </div>
+                          <div class="d-grid gap-2">
+                        <button type="submit"  class="btn btn-primary"style="--bs-btn-bg:#fe6402;--bs-btn-border-color:#fe6402">Submit</button>
+                          </div>
+                      </form>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+
+    </div>
+  <script>
+    const loadingBar = document.getElementById('loading-bar3');
+    const pageContent = document.getElementById('page-content3');
+    const footer=document.getElementsByClassName("footer");
+   
+
+
+    
+    // Simulate loading process
+    let progress = 0;
+    const intervalId = setInterval(() => {
+      progress += 10; 
+      loadingBar.style.width = progress + '%'; 
+      
+      footer[0].style.display="none";
+      // Check if loading is complete
+      if (progress >= 100) {
+        clearInterval(intervalId); // Stop the interval
+        setTimeout(() => {
+          loadingBar.style.display = 'none';
+          pageContent.style.display = 'block';
+          footer[0].style.display="block";
+         
+        }, 500); 
+      }
+    }, 0); 
+    const Schedulebtn= document.getElementById("Schedulebtn")
+    const form2= document.getElementById("manage-form2");
+    Schedulebtn.addEventListener("click",function(){
+    form2.classList.add("ani-manage")
+    
+    })
+  </script>
+  <%-include("partial/footer") -%>
+  

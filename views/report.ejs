@@ -4,7 +4,7 @@
     <div class="loading-bar" id="loading-bar2"></div>
   </div>
   <div id="page-content2">
-    <div class="report-top">
+    <div class="report-top" id="report-top">
     <div class="row report">
         <div class="col-lg-6 report-heading"><p class="rep-head">Littered Area Reporting</p>
            <img src="/images/report.jpg" class="alertimg" style="margin-top: 10%;">
@@ -25,8 +25,11 @@
             </div> 
           </div></div>
     </div>
+    <diV style="text-align: center; margin-bottom: 5%;" >
+    <button class="btn btn-primary" type="button" id="toggle" style="--bs-btn-padding-y:0.5rem; --bs-btn-padding-x: 4rem; --bs-btn-font-size:2rem; --bs-btn-bg:#fe6402; --bs-btn-border-color: #fe6402;--bs-btn-hover-bg:#fb6D48;--bs-btn-hover-border-color:#fb6D48" >Start</button>
+    </div>
 </div>
-<div class="report-bot ">
+<div class="report-bot " id="report-bot">
 
 <div class="rep-form"><form action="/report" method="post">
     <h1 style="text-align: center;">Report Now</h1>
@@ -105,6 +108,25 @@
       console.error("Geolocation is not supported by this browser.");
     }
   });
+});
+var div2 = document.getElementById("report-bot");
+div2.style.display="none";
+document.getElementById("toggle").addEventListener("click", function() {
+    var div1 = document.getElementById("report-top");
+   div2.style.display="block";
+    var scrollStep = -window.scrollY / (200 / 15); // 1000 milliseconds = 1 second
+    var scrollInterval = setInterval(function(){
+        if (window.scrollY != 0) {
+            window.scrollBy(0, scrollStep);
+        }
+        else clearInterval(scrollInterval);
+    },15);
+    div1.style.display="none";
+    
+    
+    div2.classList.add("ani2");
+
+     
 });
     
   </script>

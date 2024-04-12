@@ -418,6 +418,7 @@ body{
 {
   .calc{
     height: auto;
+    width: 80%;
   }
 }
 .item3
@@ -450,9 +451,43 @@ body{
   animation: spin 1s linear infinite; 
 }
 
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+.res-head{
+  width: 70%;
+  margin: auto;
+  color: #ffffff;
+  margin-top: 7%;
+  text-align: center;
+  margin-bottom: 7%;
+}
+.chart{
+  margin-top: 7%;
+  margin-bottom: 7%;
+}
+.benefits-image{
+  width: 50%;
+  margin: auto;
+  margin-top: 5%;
+  margin-bottom: 7%;
+
+}
+.res-card{
+ width:70%;
+ margin:auto;
+ text-align: center;
+ border-color: #fe6402;
+ border-width: 3px;
+ margin-top: 7%;
+ border-radius: 2%;
+
+ 
+}
+.but{
+  margin-top: 3%;
 }
  /* report */
  .report-heading{
@@ -470,6 +505,7 @@ body{
   width:80%;
   margin:auto;
   color: white;
+  
  }
 
 
@@ -536,8 +572,35 @@ body{
   
   
  }
+ /* .ani{
+  animation:fadeout 2s ease-in;
+ }
+ @keyframes fadeout {
+  0%{
+    opacity :1;
+  }
+  100%{
+    opacity: 0;
+  }
+ } */
+ .ani2{
+  animation: slidereport 2s ease-in;
+
+ }
+ @keyframes slidereport {
+  0%{
+    transform: translatex(100%);
+  }
+  100%{
+    transform: translateX(0%);
+  }
+ }
+ 
+
  .report-bot{
-  background-color: white;
+  background-image: url("/images/reportbg(1).jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
   padding-top: 5%;
   padding-bottom: 5%;
  }
@@ -548,7 +611,56 @@ body{
   }
 
 }
- 
+/* manage */
+.tips
+{
+  width: 80%;
+  margin: auto;
+  color: #ffffff;
+  background:linear-gradient(to bottom,#fe6402 0%,#FF9130 50%, #Ff9130 50%, #fe6402 100%);
+  padding: 4%;
+  border-radius: 2%;
+}
+.manage-top{
+  background-image: url("/images/managetop.jpeg");
+  padding-top: 3%;
+  padding-bottom: 5%;
+}
+.manage-form1{
+  width: 70%;
+  margin:auto;
+  
+  
+}
+.manage-form2{
+  width: 70%;
+  margin:auto;
+  color: #000;
+  background-color: #ffffff;
+  padding:6%;
+  border-radius: 3%;
+
+  
+}
+.manage-mid{
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  
+}
+.ani-manage{
+  animation : fadeslide 2.5s forwards
+}
+@keyframes fadeslide {
+  0%{
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  
+}
  
 
 
