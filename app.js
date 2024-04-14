@@ -326,8 +326,8 @@ app.post("/report", async function(req,res){
 
   let date = new Date().toLocaleDateString();
  
-  const city =   getCityFromCoordinates(lati, longi);
-    const state =  getStateFromCoordinates(lati, longi);
+  const city =  await  getCityFromCoordinates(lati, longi);
+    const state = await getStateFromCoordinates(lati, longi);
    
   const coordinates= {latitude:lati,longitude:longi};
 
