@@ -14,7 +14,7 @@ const router = express.Router();
 
 
 
-
+app.use(express.static(path.join(__dirname, 'views')));
 
 
 const app=express();
