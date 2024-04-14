@@ -847,3 +847,78 @@ body{
   margin-bottom: 4%;
   margin-bottom: 4%;
 }
+ 
+/* signup and login */
+.signupform{
+  width:50%;
+  margin: auto;
+  background-color: rgba(0,0,0, 0.6);
+  color: #ff9D00;
+  padding: 7%;
+  border-radius: 4%;
+  margin-bottom: 5%;
+  margin-top: 3%;
+  font-size: 1.25rem;
+  border:solid;
+  border-color: #ff9D00;
+  border-width: 3px;
+
+}
+.login-form{
+  width:30%;
+  margin: auto;
+  background-color: rgba(0,0,0, 0.6);
+  color: #ff9D00;
+  padding: 4%;
+  padding-bottom: 2%;
+  border-radius: 4%;
+  /* margin-bottom: 5%; */
+  margin-top: 3%;
+  font-size: 1.25rem;
+  border:solid;
+  border-color: #ff9D00;
+  border-width: 3px;
+}
+.signup-bg{
+  background-image: url("/images/bg.jpg");
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  padding-bottom: 5%;
+  background-position-x:center ;
+}
+.login-bg{
+  background-image: url("/images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 5%;
+  
+}
+
+/* profile */
+.prof-card{
+  width:50%;
+  margin: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-color: #Fe6402;
+  border-width: 2px;
+  border: solid;
+  border: 3%;
+}
+.scorecard{
+  width:70%;
+  margin:auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding: 3%;
+  
+
+}
+.prof{
+  background-image: url("/images/bg(1).jpg");
+  background-position-x:center ;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}

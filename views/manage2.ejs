@@ -28,7 +28,7 @@
        <div class="manage2cards">
         <div class="row" >
             
-        <% for(i=0;i<6;i++) { %>
+        <% for(i=0;i<titles.length;i++) { %>
             <div class="col-lg-4">
             <div class="card manage2-cards" >
                 
@@ -88,7 +88,7 @@ function calculateDistance(point1, point2) {
     return distance.toFixed(2); 
 }
 var test = <%- JSON.stringify(coords) %>;
-var map = L.map('map2').setView([lati,longi], 13); 
+var map = L.map('map2').setView([lati,longi], 12); 
 
 // Add the tile layer to the map
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

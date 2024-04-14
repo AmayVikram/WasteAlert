@@ -1,0 +1,25 @@
+<%-include("partial/header") -%>
+<div class="login-bg">
+    
+        <h1 class="login-head" style="color:white; margin-top: 5%; font-family:poppins;text-align: center;font-size: 5rem;font-weight: 500;text-decoration: underline;">Log In</h1>
+    
+    <div class="login">
+        <form class="login-form" action="/login" method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label sign-up-label">Username</label>
+                <input type="text" class="form-control" id="loginUsername" name="loginUsername" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label sign-up-label">Password</label>
+                <input type="password" class="form-control" id="loginPassword" name="loginPassword" required>
+            </div>
+            <div class="d-grid gap-2">            
+                <button type="submit" class="btn btn-success"style="--bs-btn-bg:#fe6402;--bs-btn-border-color:#fe6402">Log In</button>
+            </div>
+            <div class="d-grid gap-2" style="text-align: center;margin-top: 1rem;;">
+                <p>Don't have an Account? <a href="/signup">Sign Up</a></p>
+              </div>
+        </form>
+    </div>
+</div>
+<%- include("partial/footer") -%>

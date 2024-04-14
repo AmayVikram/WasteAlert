@@ -1,0 +1,49 @@
+<%- include("partial/header") -%>
+
+ <div class="prof">
+        <div class="row">
+               <div class="col-lg-6">
+                <div class="card prof-card" >
+        <div>
+          
+                <img src="/images/profilecam-removebg-preview.png" alt="Male Avatar" class="card-img-top"  style="padding: 5%;">
+           
+        </div>
+        <div class="card-body">
+            <% if (user) { %>
+            <h1 style="font-family: 'Lato'; font-size: 50px; font-weight: 700;">Hello <%= user.username %> </h1>
+                <div class="user-data">
+                        <p style="font-family: 'roboto'; font-size: 20px;">name:<%= user.name %></p>
+                    <p style="font-family: 'roboto'; font-size: 20px;">Mobile Number: <%= user.mobno %></p>
+                    
+                    <p style="font-family: 'roboto'; font-size: 20px;">Email: <%= user.email %></p>
+                </div>
+            <% } else { %>
+                <p>No user data found.</p>
+            <% } %>
+            
+            <form action="/logout" method="POST">
+                <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary" style="--bs-btn-bg:#fe6402;--bs-btn-border-color:#fe6402">Logout</button>
+            </div>
+            </form>
+            
+        </div>
+      </div>
+               </div> 
+          <div class="col-lg-6">
+                <div class="card scorecard">
+                  <h1 style="text-align: center;">Your Scores</h1>
+                  <% for(i=0;i<user.scores.length;i++) { %>
+                   <p style="font-family: 'roboto';font-size: 1.5rem;"><%= user.scores[i].date %> : <%= user.scores[i].alertscore %></p>
+                   <% } %>
+
+                </div>
+        
+        </div>
+ </div>
+ </div>
+
+
+
+<%- include("partial/footer") -%>
