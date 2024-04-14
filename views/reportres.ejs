@@ -1,0 +1,87 @@
+<%-include("partial/header") -%>
+
+<div id="loading-container">
+    <div class="spinner-border" role="status" style="color:#fe6402; --bs-spinner-width:50px;--bs-spinner-height:50px">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    </div>
+
+
+    <div id="actual-content" style="opacity: 0;">
+        <div class=" reportrestop">
+            <div class="row">
+            <div class="col-lg-6">
+            <div id="complain-form" class="complain-form">
+                 
+                <h1 style="text-align: center;margin-bottom: 5%; font-family: poppins;font-weight: 900;font-size:60px;padding-right: 10%;line-height: 72px;">Confirm Your Complain</h1>
+                <p class="p1" style="margin-bottom: 3%;font-size: 2rem;font-family: Lato;font-weight: 600;">Name: <%= FormData.name %></p>
+                <p class="p2" style="margin-bottom: 3%; font-size: 2rem;font-family: Lato;font-weight: 600;">Email:<%= FormData.email %></p>
+                <p class="p3" style="margin-bottom: 3%;font-size: 2rem;font-family: Lato;font-weight: 600;">Location: <%= city %>,<%= state %><p>
+                <p class="p4" style="margin-bottom: 3%;font-size: 2rem;font-family: Lato;font-weight: 600;">Date: <%= date %> </p>
+            <div style="text-align: center;">
+                <button class="btn btn-primary" id="latitude" value="<%= lati %>" style="margin-right: 6%;margin-top: 5%;--bs-btn-bg:#fe6402;--bs-btn-border-color:#fe6402;--bs-btn-padding-x:3%;--bs-btn-padding-x:3%; --bs-btn-hover-bg:#fe9130;--bs-btn-hover-border-color:#fe9130;">Go Back</button>
+                <button class="btn btn-primary" class="confirmBtn" id="longitude" value="<%= longi %>"style="margin-top:5%;--bs-btn-bg:#fe6402;--bs-btn-border-color:#fe6402;--bs-btn-hover-bg:#fe9130;--bs-btn-hover-border-color:#fe9130;">Confirm</button>
+            </div>
+                
+        </div>
+            </div>
+           <div class="col-lg-6">
+            <div id="map">
+
+            </div>
+           </div>
+        </div>
+
+        </div>
+        
+    
+    
+                
+            </div>
+            
+                        
+                    
+                
+            
+   
+    <script>document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("loading-container").style.display = "flex";
+        
+        
+       
+        setTimeout(function() {
+          document.getElementById("loading-container").style.display = "none";
+      
+          document.getElementById("actual-content").style.opacity =1;
+    
+        }, 1500);
+      });
+
+     
+      var longi= document.getElementById('longitude').value;
+      var lati= document.getElementById('latitude').value;
+      var map = L.map('map').setView([lati, longi], 16); // Set coordinates and zoom level
+
+// Add the tile layer to the map
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// Add a marker to the map
+L.marker([lati, longi]).addTo(map) // Set marker coordinates
+    .bindPopup('Your Location').openPopup();
+    
+     // Add a popup to the marker
+     var button=document.getElementById('longitude');
+      button.addEventListener('click',function(){
+        var card= document.getElementById('complain-form');
+        card.classList.add('cardrot');
+        setTimeout(() => {
+            card.innerHTML= '<h1 style="text-align: center;margin-bottom: 5%; font-family: poppins;font-weight: 900;font-size:60px;padding-right: 10%;line-height: 72px;">Your Complaint has been registered</h1><p style="margin-bottom: 3%;font-size: 2rem;font-family: Lato;font-weight: 600;">We sincerely thank you for your effort in making the world a cleaner, safer place.</p>'
+            
+        }, 1500);
+      })
+      
+    </script>
+
+<%-include("partial/footer") -%>

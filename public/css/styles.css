@@ -459,10 +459,16 @@ body{
 .res-head{
   width: 70%;
   margin: auto;
-  color: #ffffff;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-width: 2px;
+  border: solid;
+  border-color: white;
   margin-top: 7%;
   text-align: center;
   margin-bottom: 7%;
+  padding: 5%;
+  border-radius: 3%;
 }
 .chart{
   margin-top: 7%;
@@ -483,11 +489,48 @@ body{
  border-width: 3px;
  margin-top: 7%;
  border-radius: 2%;
-
+ 
  
 }
+
+
+
+
+
+.res-card:hover{
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  animation: bgcolor 2s infinite;
+  color: #fff;
+  
+}
+@keyframes bgcolor {
+   0%{
+    background:linear-gradient(to bottom,#ffa656 0%,#Fe6402 25%,#fe6402 50%, #fe6402 75%,#fe6402 100%);
+
+   } 
+   25%{
+    background:linear-gradient(to bottom,#fe6402 0%,#Ffa656 25%,#fe6402 50%, #fe6402 75%,#fe6402 100%);
+   }
+   50%{
+    background:linear-gradient(to bottom,#fe6402 0%,#Fe6402 25%,#ffa656 50%, #fe6402 75%,#fe6402 100%);
+   }
+   75%{
+    background:linear-gradient(to bottom,#fe6402 0%,#Fe6402 25%,#fe6402 50%, #ffa656 75%,#fe6402 100%);
+
+   }
+   100%{
+    background:linear-gradient(to bottom,#fe6402 0%,#Fe6402 25%,#fe6402 50%, #fe6402 75%,#ffa656 100%);
+  
+   }
+}
+
 .but{
   margin-top: 3%;
+}
+.result{
+  background-image: url("/images/resultbg.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
  /* report */
  .report-heading{
@@ -661,7 +704,146 @@ body{
   }
   
 }
- 
+ /* report res */
+.complain-form
+{
+  width:70%;
+  color:white;
+  text-align: left;
+  margin: auto;
+  padding-top: 4%;
+  padding-bottom:4%;
+  font-size: 2rem;
+  padding-left: 5%;
+  padding-right: 5%;
 
 
+  background-color: #000;
 
+  
+
+  
+}
+.reportrestop
+{
+  padding-top: 7%;
+  padding-bottom: 7%;
+}
+.registered{
+  width:70%;
+  color: #ffffff;
+  margin: auto;
+
+}
+#map{
+  height: 600px;
+  /* width:%; */
+  margin: auto;
+  margin-right: 9%;
+  margin-top: 5%;
+  
+  
+}
+.p1{
+  animation: p1 5s forwards 
+}
+@keyframes p1 {
+  0%{
+    transform: translateX(1000%);
+  }
+  100%{
+    transform: translateY(0%);
+  }
+}
+.p2{
+  animation: p3 5s forwards
+}
+@keyframes p2 {
+  0%{
+    transform: translateY(1000%);
+  }
+  100%{
+    transform: translateY(0%);
+  }
+}
+.p3{
+  animation: p2 5s forwards;
+}
+@keyframes p3 {
+  0%{
+    transform: translateY(-1000%);
+  }
+  100%{
+    transform: translateY(0%);
+  }
+}
+.p4
+{
+  animation: p4 5s forwards
+}
+@keyframes p4 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@media(max-width:768px)
+{
+  .complain-form{
+    width:100%;
+  }
+}
+.cardrot{
+  animation: cardrot 3s forwards
+}
+@keyframes cardrot {
+  0%{
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+  50%{
+    transform: rotateY(180deg);
+    opacity:0;
+  }
+  100%{
+    transform: rotateY(360deg);
+    opacity: 1;
+  }
+}
+/* .manage */
+.heading-manage2{
+  margin-top: 6%;
+  width:50%;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-width: 2px;
+  border-color: #ffffff;
+  border-radius: 3%;
+  border: solid;
+  margin-bottom: 6%;
+  padding-top: 4%;
+  padding-bottom: 4%;  
+}
+.manage2-top{
+  background-image: url("/images/manage2top.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 5%;
+  padding-bottom: 2%;
+}
+#map2{
+  height: 600px;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 5%;
+
+}
+.manage2-cards
+{
+  width:50%;
+  margin: auto;
+  margin-bottom: 4%;
+  margin-bottom: 4%;
+}

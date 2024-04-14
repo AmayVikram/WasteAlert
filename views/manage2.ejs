@@ -1,0 +1,133 @@
+<%-include("partial/header") -%>
+
+<div id="loading-container">
+    <div class="spinner-border" role="status" style="color:#fe6402; --bs-spinner-width:50px;--bs-spinner-height:50px">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    </div>
+    <div id="actual-content" style="opacity: 0;">
+        <div class="manage2-top">
+        <div class="heading-manage2" style="text-align: center;color: #fff;">
+           
+           <h1 style="text-align: center;margin-bottom: 5%; font-family: poppins;font-weight: 900;font-size:60px;line-height: 72px;"> Appointment Scheduled</h1>
+                <p  style="margin-bottom: 3%;font-size: 2rem;font-family: Lato;font-weight: 600;">Name: <%= FormData2.name %></p>
+                <p  style="margin-bottom: 3%; font-size: 2rem;font-family: Lato;font-weight: 600;">Email:<%= FormData2.email %></p>
+                <p  style="margin-bottom: 3%;font-size: 2rem;font-family: Lato;font-weight: 600;">Address: <%= FormData2.address %><p>
+                <p  style="margin-bottom: 3%;font-size: 2rem;font-family: Lato;font-weight: 600;">Date: <%= FormData2.date %> </p>
+            <div style="text-align: center;">
+                <a href="/"> <button class="btn btn-primary" id="latitude2" value="<%= lati %>" style="margin-bottom: 5%;--bs-btn-bg:#fe6402;--bs-btn-border-color:#fe6402;--bs-btn-padding-x:3%;--bs-btn-padding-x:3%; --bs-btn-hover-bg:#fe9130;--bs-btn-hover-border-color:#fe9130;">Go Back</button></a>
+               
+            </div>
+        </div>
+    </div>
+    <div class="manage2-mid" style="color:#fff">
+        <h1 style="text-align: center;margin-bottom: 5%; font-family: poppins;font-weight: 900;font-size:60px;line-height: 72px;margin-top: 5%;">Waste Management Centers Near You</h1>
+       <div id="map2">
+         
+       </div>
+       <div class="manage2cards">
+        <div class="row" >
+            
+        <% for(i=0;i<6;i++) { %>
+            <div class="col-lg-4">
+            <div class="card manage2-cards" >
+                
+                <div class="card-body">
+                  <h5 class="card-title"><%= titles[i] %></h5>
+                  <p class="card-text">Address: <%= addresses[i] %> </p>
+                  <p class="card-text">Phone: <%=phones[i] %> </p>
+                  
+                </div>
+              </div>
+            </div>
+          <% } %>
+        
+        </div>
+    </div>
+    </div>
+</div>
+
+
+   <script> document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("loading-container").style.display = "flex";
+        
+        
+       
+        setTimeout(function() {
+          document.getElementById("loading-container").style.display = "none";
+      
+          document.getElementById("actual-content").style.opacity =1;
+    
+        }, 1500);
+      });
+
+      // Initialize the map
+      var longi= <%= longi %>;
+      var lati= document.getElementById('latitude2').value;
+     
+      var yourLocation = L.latLng(lati, longi);
+
+      
+
+// Calculate distance between two points using Haversine formula
+function calculateDistance(point1, point2) {
+    var R = 6371; 
+    var lat1 = point1.lat;
+    var lon1 = point1.lng;
+    var lat2 = point2.lat;
+    var lon2 = point2.lng;
+
+    var dLat = (lat2 - lat1) * Math.PI / 180;
+    var dLon = (lon2 - lon1) * Math.PI / 180;
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var distance = R * c;
+
+    return distance.toFixed(2); 
+}
+var test = <%- JSON.stringify(coords) %>;
+var map = L.map('map2').setView([lati,longi], 13); 
+
+// Add the tile layer to the map
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// Add markers for the given coordinates
+var markers = test;
+
+markers.forEach(marker => {
+    var markerLocation = L.latLng(marker.coordinates[0], marker.coordinates[1]);
+    var distance = calculateDistance(yourLocation, markerLocation);
+
+    L.marker(marker.coordinates, {
+        icon: L.icon({
+            iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+            shadowSize: [41, 41]
+        }),
+        riseOnHover: true,
+        riseOffset: 250
+    }).addTo(map).bindPopup(`${marker.name}<br>Distance: ${distance} km`);
+});
+var greenIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+// Add marker for your location (example)
+var myLocationMarker = L.marker([lati,longi],{icon:greenIcon}).addTo(map).bindPopup('Your Location').openPopup();
+
+
+    </script>
+    <%-include("partial/footer") -%>
+

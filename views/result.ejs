@@ -9,17 +9,22 @@
   
   <div id="actual-content" style="display: none;">
     <div class="res-top">
-      <div class="row">
+      <div class="result" style="text-align: center;padding-top: 7%; padding-bottom: 7%;color: white;">
+
+        <h1 style="font-size: 3rem;font-weight: 500;margin-bottom: 4%;">Waste Generation Impact Report</h1>
+        <h2 style="font-size: 2.5rem;"><%= date %></h2>
+      </div>
+      <div class="row" style="background: linear-gradient(to right,#fe6402 0%,#FF9130 50%, #Ff9130 50%, #fe6402 100%);;">
         <div class="col-lg-6">
           <div class="res-head">
-          <h1>Your  Alert Score is:</h1>
+          <h1 >Your  Alert Score is:</h1>
           <h1><%= alertscore %>
           <p style="text-align: center;"><%= rstring %> <p>
         
         </div>
       </div>
         <div class="col-lg-6">
-          <div class="chart" style="width:80%;">
+          <div class="chart" style="width:80%;margin: auto;margin-top: 12%;">
             <canvas id="myChart" style="background-color:aliceblue;"></canvas>
            </div>
           
@@ -32,12 +37,19 @@
      <div class="row">
       <div class="col-lg-4">
         <div class="card res-card">
+          
+          
           <img src="/images/energy-conservator.png" class="card-img-top benefits-image" alt="...">
           <div class="card-body">
             <h3 style="text-decoration: underline;color: #fe6402;">Resource Conservation</h3>
             <p class="card-text" style="margin-bottom: 5%;margin-top: 5%; font-size: 1.3rem;">Reducing waste preserves natural resources like forests, water, and minerals.</p>
           </div>
-        </div>
+        
+        
+      
+        
+      
+        </div> 
       </div>
       <div class="col-lg-4">
         <div class="card res-card">
@@ -63,6 +75,7 @@
         <div class="card res-card">
           <img src="/images/earth.png" class="card-img-top benefits-image" alt="...">
           <div class="card-body">
+            
             <h3 style="text-decoration: underline;color: #fe6402;">Ecosystem Protection</h3>
             <p class="card-text" style="margin-bottom: 5%;margin-top: 5%; font-size: 1.3rem;">By minimizing waste, we prevent pollution and protect wildlife and ecosystems.</p>
           </div>
@@ -153,6 +166,19 @@ new Chart(ctx, {
     }
   }
 });
+const card = document.querySelectorAll('.res-card');
+  for(i=0;i<card.length;i++)
+  {
+  card[i].addEventListener('mouseover', function() {
+    const h3 = this.querySelector('h3');
+    h3.style.color = 'white';
+  });
+
+  card[i].addEventListener('mouseout', function() {
+    const h3 = this.querySelector('h3');
+    h3.style.color = '#fe6402';
+  });
+}
 
   </script>
 <%-include("partial/footer") -%>
