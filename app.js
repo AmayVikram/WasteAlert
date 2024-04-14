@@ -14,14 +14,14 @@ const router = express.Router();
 
 
 
-app.use(express.static(path.join(__dirname, 'views')));
+
 
 
 const app=express();
 app.use(express.json());
 var test=0;
 var logged=" ";
-
+app.use(express.static(path.join(__dirname, 'views')));
 
 
 mongoose.connect('mongodb+srv://amayvikramsinghece23:l3NH8WjxW380hj5D@q.ickxvwx.mongodb.net/?retryWrites=true&w=majority&appName=GH/userDB');
