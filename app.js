@@ -2,7 +2,7 @@ const express=require("express");
 const bodyParser=require("body-parser");
 const ejs=require("ejs");
 const https = require("https")
-const bcrypt = require("bcrypt");
+var bcrypt = require("bcryptjs");
 const _ = require("lodash");
 const path = require('path');
 
