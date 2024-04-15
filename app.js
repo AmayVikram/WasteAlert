@@ -122,8 +122,8 @@ app.post("/logout", function(req, res) {
 
   req.session.destroy(function(err) {
       if (err) {
-          console.error("Error destroying session:", err);
-          return res.status(500).json({ error: "Internal Server Error" });
+          console.error("Error in clearing session:", err);
+          return res.status(500).json({ error: " Error in Internal Server " });
       }
       test=0;
       logged="";
@@ -257,6 +257,8 @@ app.get("/calculator",function(req,res){
   res.render("calculator",{test:test,logged:logged})
 })
 
+
+
 app.post("/calculator",  function(req,res){
   console.log(req.body);
   var alertscore=0;
@@ -304,7 +306,9 @@ app.post("/calculator",  function(req,res){
 
   
 })
-
+app.get("/contactus",function(req,res){
+   res.render("contactus",{logged:logged,test:test})
+})
 
 app.get("/result",function(req,res){
   res.render("result",{test:test,logged:logged})

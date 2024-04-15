@@ -6,7 +6,7 @@
                 <div class="card prof-card" >
         <div>
           
-                <img src="/images/profilecam-removebg-preview.png" alt="Male Avatar" class="card-img-top"  style="padding: 5%;">
+                <img src="/images/profilecam-removebg-preview.png" alt="photo" class="card-img-top"  style="padding: 5%;">
            
         </div>
         <div class="card-body">
@@ -24,26 +24,52 @@
             
             <form action="/logout" method="POST">
                 <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary" style="--bs-btn-bg:#fe6402;--bs-btn-border-color:#fe6402">Logout</button>
+                <button type="submit" class="btn btn-danger" >Logout</button>
             </div>
             </form>
             
         </div>
       </div>
                </div> 
+        
           <div class="col-lg-6">
+            <div class="profacc">
+            <div class="accordion profile" id="accordionExample"  style="--bs-accordion-bg:#fe9130;--bs-accordion-active-bg:#fe6402">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                           Your Scores
+                        </button></h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                      
                 <div class="card scorecard">
-                  <h1 style="text-align: center;">Your Scores</h1>
+                  
                   <% for(i=0;i<user.scores.length;i++) { %>
                    <p style="font-family: 'roboto';font-size: 1.5rem;"><%= user.scores[i].date %> : <%= user.scores[i].alertscore %></p>
                    <% } %>
+                 
 
                 </div>
+                            </div></div>
         
         </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                   Your reports
+                </button></h2>
  </div>
+ <div class="accordion-item">
+    <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+           Your Management requests
+        </button></h2>
+</div>
+
+ 
  </div>
-
-
+        </div></div>
+    </div>
 
 <%- include("partial/footer") -%>

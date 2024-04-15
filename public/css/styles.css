@@ -287,15 +287,21 @@
     text-align: center;
     padding-left: 15%;
     padding-right: 15%;
-  background:linear-gradient(to bottom,#fe6402 0%,#FF9130 50%, #Ff9130 50%, #fe6402 100%);
-    
+    /* background-color: #000;
+     */
+     background: linear-gradient(to right, #000000, #434343);
+    color: #ffffff;
 }
+.footerimg{
+  width:50%
+}
+
 .footer-head
 {
     font-style: "roboto";
     text-align: left;
     padding-bottom: 15%;
-    color: #000000;
+    
     font-size: 20px;
     margin-top: 15px;
     font-weight: 600;
@@ -307,7 +313,7 @@
 .footer-para
 {
     padding: 2%;
-    color: #918a8a;
+  
     font-weight: 300;
     margin-bottom: 0%;
     line-height: 35px;
@@ -318,9 +324,10 @@
 }
 .links-foot
 {
-    color: #918a8a;
+    color:#ffffff;
     padding: 1%;
     font-family: 'roboto';
+    font-size:1.25rem;
     font-weight: 300;
 }
 /* Logo  and title*/
@@ -846,6 +853,8 @@ body{
   margin: auto;
   margin-bottom: 4%;
   margin-bottom: 4%;
+  background: linear-gradient(135deg, #000000, #Fe6402);
+  color: #ffffff;
 }
  
 /* signup and login */
@@ -900,19 +909,22 @@ body{
   margin: auto;
   margin-top: 5%;
   margin-bottom: 5%;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-color: #Fe6402;
+  background: linear-gradient(180deg, #000000, #Fe6402)
+;  
   border-width: 2px;
   border: solid;
   border: 3%;
+  color: #ffffff;
+  border-color: #ff9D00;
+
 }
 .scorecard{
-  width:70%;
+  
   margin:auto;
   margin-top: 5%;
   margin-bottom: 5%;
   padding: 3%;
-  
+  background-color: #FF9130;
 
 }
 .prof{
@@ -921,4 +933,19 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
 
+}
+.profacc{
+  width:80%;
+  margin: auto;
+  margin-top: 5%;
+  
+}
+/* contact */
+.contact-bg{
+  background-image: url("/images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 5%;
+  background-position-x:center ;
+  
 }
