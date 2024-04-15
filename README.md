@@ -1,6 +1,9 @@
 # Waste Alert
 https://wastealert.onrender.com/
 
+# Demo Video
+https://drive.google.com/file/d/1KDFv_KJIzeWbUtIp1AJ2bbyTxG1KoPKn/view?usp=sharing
+
 ## Team:
 Amay Vikram Singh
 ## Description:
